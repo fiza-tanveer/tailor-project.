@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Tailor Dashboard</title>
+
+  <!-- ICONS -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <h2><i class="fa-solid fa-scissors"></i> Smart Tailor</h2>
+
+    <ul>
+      <li><i class="fa-solid fa-user"></i> Customer</li>
+
+      <li><i class="fa-solid fa-ruler"></i> Measurement</li>
+
+      <li><i class="fa-solid fa-cart-shopping"></i> Orders</li>
+
+      <li><i class="fa-solid fa-money-bill"></i> Payment</li>
+
+      <li><i class="fa-solid fa-layer-group"></i> Layout</li>
+
+      <li><i class="fa-solid fa-gear"></i> Settings</li>
+    </ul>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOKEN PREVIEW -->
+    <div class="top-bar">
+      <b>Token Preview:</b>
+      <span id="previewToken">#0000</span>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-box">
+
+      <h2>Customer Order Form</h2>
+
+      <input id="customerId" type="text"
+      placeholder="Customer ID">
+
+      <input id="customerName" type="text"
+      placeholder="Customer Name">
+
+      <input id="date" type="date">
+
+      <input id="address" type="text"
+      placeholder="Address">
+
+      <input id="fate" type="text"
+      placeholder="Notes / Fate">
+
+      <input id="phone" type="text"
+      placeholder="Phone No">
+
+      <input id="dressType" type="text"
+      placeholder="Suit / Dress Type">
+
+      <input id="deliveryDate" type="date">
+
+      <button onclick="generateToken()">
+        Generate Token
+      </button>
+
+      <p id="msg"></p>
+
+    </div>
+
+    <!-- TOKEN BOX -->
+    <div class="token-box">
+
+      <h3>Token Preview</h3>
+
+      <h1 id="tokenDisplay">#----</h1>
+
+      <p class="thanks">
+        Thank You 😊 <br>
+        Your order has been received.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
