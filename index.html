@@ -1,260 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Payment Record</title>
+  <title>Smart Tailor Dashboard</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial;
-}
+  <!-- ICONS -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-/* MAIN LAYOUT */
-body{
-    display:flex;
-    background:#f1f5f9;
-}
-
-/* SIDEBAR */
-.sidebar{
-    width:230px;
-    height:100vh;
-    background:#0f172a;
-    color:white;
-    padding:20px;
-}
-
-.sidebar h2{
-    margin-bottom:20px;
-    font-size:18px;
-}
-
-.sidebar a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:10px;
-    margin:6px 0;
-    border-radius:6px;
-}
-
-.sidebar a:hover{
-    background:#1e293b;
-}
-
-.active{
-    background:#2563eb;
-}
-
-/* MAIN */
-.main{
-    flex:1;
-    padding:20px;
-}
-
-.title{
-    font-size:22px;
-    margin-bottom:15px;
-    font-weight:bold;
-}
-
-/* CONTENT AREA */
-.wrapper{
-    display:flex;
-    gap:20px;
-}
-
-/* LEFT FORM */
-.form{
-    flex:2;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-}
-
-label{
-    font-size:13px;
-    margin-top:10px;
-    display:block;
-    color:#333;
-}
-
-input, select, textarea{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    outline:none;
-}
-
-.row{
-    display:flex;
-    gap:10px;
-}
-
-.row div{
-    flex:1;
-}
-
-/* BUTTONS */
-.btns{
-    margin-top:15px;
-}
-
-button{
-    padding:10px 15px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.save{
-    background:#2563eb;
-    color:white;
-}
-
-.reset{
-    background:#94a3b8;
-    color:white;
-    margin-left:10px;
-}
-
-/* RIGHT PANEL */
-.right{
-    flex:1;
-}
-
-/* CARD */
-.card{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-/* STATUS */
-.paid{
-    color:green;
-    font-weight:bold;
-}
-
-.pending{
-    color:orange;
-    font-weight:bold;
-}
-
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <h2>Tailor System</h2>
+<div class="container">
 
-    <a href="#">Dashboard</a>
-    <a href="#">Customers</a>
-    <a href="#">Measurements</a>
-    <a class="active" href="#">Payments</a>
-    <a href="#">Settings</a>
-</div>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
 
-<!-- MAIN -->
-<div class="main">
+    <h2><i class="fa-solid fa-scissors"></i> Smart Tailor</h2>
 
-    <div class="title">Payment Record</div>
+    <ul>
+      <li><i class="fa-solid fa-user"></i> Customer</li>
 
-    <div class="wrapper">
+      <li><i class="fa-solid fa-ruler"></i> Measurement</li>
 
-        <!-- FORM -->
-        <div class="form">
+      <li><i class="fa-solid fa-cart-shopping"></i> Orders</li>
 
-            <label>Customer Name</label>
-            <select>
-                <option>Ahmed Ali (C001)</option>
-                <option>Bilal Khan</option>
-                <option>Usman</option>
-            </select>
+      <li><i class="fa-solid fa-money-bill"></i> Payment</li>
 
-            <div class="row">
-                <div>
-                    <label>Total Amount</label>
-                    <input type="number" id="total">
-                </div>
+      <li><i class="fa-solid fa-layer-group"></i> Layout</li>
 
-                <div>
-                    <label>Advance Paid</label>
-                    <input type="number" id="paid">
-                </div>
-            </div>
+      <li><i class="fa-solid fa-gear"></i> Settings</li>
+    </ul>
 
-            <div class="row">
-                <div>
-                    <label>Remaining</label>
-                    <input type="number" id="remaining" readonly>
-                </div>
+  </div>
 
-                <div>
-                    <label>Status</label>
-                    <input type="text" value="Pending">
-                </div>
-            </div>
+  <!-- MAIN -->
+  <div class="main">
 
-            <label>Payment Date</label>
-            <input type="date">
+    <!-- TOKEN PREVIEW -->
+    <div class="top-bar">
+      <b>Token Preview:</b>
+      <span id="previewToken">#0000</span>
+    </div>
 
-            <label>Notes</label>
-            <textarea placeholder="Enter notes..."></textarea>
+    <!-- FORM -->
+    <div class="form-box">
 
-            <div class="btns">
-                <button class="save">Save Payment</button>
-                <button class="reset">Reset</button>
-            </div>
+      <h2>Customer Order Form</h2>
 
-        </div>
+      <input id="customerId" type="text"
+      placeholder="Customer ID">
 
-        <!-- RIGHT SIDE -->
-        <div class="right">
+      <input id="customerName" type="text"
+      placeholder="Customer Name">
 
-            <div class="card">
-                <h3>Payment Summary</h3>
-                <p>Total Amount: Rs. 5000</p>
-                <p>Paid Amount: Rs. 2000</p>
-                <p>Remaining: Rs. 3000</p>
-                <p class="pending">Status: Pending</p>
-            </div>
+      <input id="date" type="date">
 
-            <div class="card">
-                <h3>Recent Payments</h3>
-                <p>Bilal Khan - Rs. 4000 <span class="paid">Paid</span></p>
-                <p>Usman - Rs. 3500 <span class="paid">Paid</span></p>
-                <p>Hassan - Rs. 2500 <span class="pending">Pending</span></p>
-            </div>
+      <input id="address" type="text"
+      placeholder="Address">
 
-        </div>
+      <input id="fate" type="text"
+      placeholder="Notes / Fate">
+
+      <input id="phone" type="text"
+      placeholder="Phone No">
+
+      <input id="dressType" type="text"
+      placeholder="Suit / Dress Type">
+
+      <input id="deliveryDate" type="date">
+
+      <button onclick="generateToken()">
+        Generate Token
+      </button>
+
+      <p id="msg"></p>
 
     </div>
+
+    <!-- TOKEN BOX -->
+    <div class="token-box">
+
+      <h3>Token Preview</h3>
+
+      <h1 id="tokenDisplay">#----</h1>
+
+      <p class="thanks">
+        Thank You 😊 <br>
+        Your order has been received.
+      </p>
+
+    </div>
+
+  </div>
+
 </div>
 
-<script>
-let total = document.getElementById("total");
-let paid = document.getElementById("paid");
-let remaining = document.getElementById("remaining");
-
-function calc(){
-    remaining.value = Number(total.value) - Number(paid.value);
-}
-
-total.addEventListener("input", calc);
-paid.addEventListener("input", calc);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
